@@ -16,3 +16,8 @@ The very first test written with using Playground from RTL.
 3. Modified jest script by adding --watch flag.
 
 The whole thing needs to constant improvements.
+
+
+**18 Feb. 2024**
+
+Added singup page.

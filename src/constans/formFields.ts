@@ -33,7 +33,7 @@ const loginFields = [
 ]
 const signupFields = [
 {
-label: "Username",
+labelText: "Username",
 labelFor: "username",
 id:"username",
 name: "username",

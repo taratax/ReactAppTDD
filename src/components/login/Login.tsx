@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { loginFields } from "../../constans/formFields"
 import { Input } from "../input/Input"
+import { FormAction } from "../formaction/FormAction"
+import { FormExtra } from "../formextra/FormExtra"
 
 export const Login = function() {
     
@@ -27,12 +29,14 @@ export const Login = function() {
                 name={field.name}
                 type={field.type}
                 isRequired={field.isRequired}
-                placeholder={field.placeholder}
+                placeholder={field.placeholder} 
                 customClass=""
                 
                 />)
             }
         </div>
+        <FormExtra />
+        <FormAction handlesubmit={()  => { return null}} text="Login"/>
        </form>
     )
 }

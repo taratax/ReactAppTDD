@@ -8,7 +8,7 @@ export const LoginPage = function() {
         heading="Login to your account"
         paragraph="Don't have  a count yet ?"
         linkName="Signup"
-        linkUrl="/sugnnup"
+        linkUrl="/signup"
         />
         <Login />
         </>
