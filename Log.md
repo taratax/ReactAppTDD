@@ -21,3 +21,11 @@ The whole thing needs to constant improvements.
 **18 Feb. 2024**
 
 Added singup page.
+
+
+**19 Feb. 2024**
+
+1. Making some improvements in the Login page.
+2. Added white text color for input fields when in Dark mode.
+3. Use of keyof operator.
+

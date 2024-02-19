@@ -1,6 +1,6 @@
 
 export type formActionProps = {
-    handlesubmit: (e: React.ChangeEvent<HTMLInputElement>) => void,
+    handlesubmit: (e: React.ChangeEvent<HTMLButtonElement>) => void,
     type?: string
     action?: "submit" | "reset" | "button",
     text: string
