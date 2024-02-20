@@ -14,7 +14,7 @@ export const Signup = function() {
         return null;
       };
 
-      const handleSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const handleSubmit = (event: React.ChangeEvent<HTMLButtonElement>) => {
         event.preventDefault()
         console.log(`GK handleSubmit signupState: ${signupState}`)
         createAccount()

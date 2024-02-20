@@ -29,3 +29,8 @@ Added singup page.
 2. Added white text color for input fields when in Dark mode.
 3. Use of keyof operator.
 
+**20 Feb. 2024**
+
+1. Finishing the SignupPage component.
+2. Adding tests for Signup component.
+3. First use of MemoryRouter in the tests.
