@@ -1,38 +1,32 @@
-import { render, screen } from '@testing-library/react';
-import { SignupPage } from './SignupPage';
-import { MemoryRouter } from 'react-router-dom';
+import { render, screen, fireEvent } from "@testing-library/react";
+import { SignupPage } from "./SignupPage";
+import { MemoryRouter } from "react-router-dom";
 
+describe("Testing the signup view", () => {
+  it("Checking the text Signup to create account", () => {
+    render(
+      <MemoryRouter initialEntries={["/signup"]}>
+     <SignupPage />
+      </MemoryRouter>
+    );
+    // screen.logTestingPlaygroundURL();
 
-describe('Testing the signup view', () => {
+    const element = screen.getByRole("heading", {
+      name: /signup to create /i,
+    });
 
-    it('Checking the text Signup to create account', () => {
-       
-        render(
-        <MemoryRouter  initialEntries={["/signup"]}>
+    expect(element).toBeInTheDocument();
+  });
+
+  it("Checking Already have account text", () => {
+    render(
+      <MemoryRouter initialEntries={["/signup"]}>
         <SignupPage />
-        </MemoryRouter>
-        )
-        // screen.logTestingPlaygroundURL();
+      </MemoryRouter>
+    );
 
-        const element = screen.getByRole('heading', {
-            name: /signup to create /i
-          })
+    const element = screen.getByText(/already have account\?/i);
 
-          expect(element).toBeInTheDocument()
-
-    })
-
-    it('Checking Already have account text', () => {
-        render(
-            <MemoryRouter initialEntries={["/signup"]}>
-                <SignupPage />
-            </MemoryRouter>
-        )
-
-        const element = screen.getByText(/already have account\?/i)
-
-        expect(element).toBeInTheDocument()
-    })
-
-
-})
+    expect(element).toBeInTheDocument();
+  });
+});

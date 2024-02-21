@@ -34,3 +34,11 @@ Added singup page.
 1. Finishing the SignupPage component.
 2. Adding tests for Signup component.
 3. First use of MemoryRouter in the tests.
+
+**21 Feb. 2024**
+
+1. Adding prettier for better formatting.
+2. Polishing and refactoring Signup component.
+3. Trying to get better at type indexers
+
+There is still one type problem to be solved in Signup component's value property of its Input component.

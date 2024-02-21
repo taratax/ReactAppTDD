@@ -11,8 +11,7 @@ describe.skip('Testing  Signup component', () => {
       
 
         const element = screen.getByRole('button', {
-            name: /sign up/i
-          })
+            name: /sign up/i})
 
           expect(element).toBeInTheDocument()
 
