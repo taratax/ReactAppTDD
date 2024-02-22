@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { SignupPage } from "./SignupPage";
 import { MemoryRouter } from "react-router-dom";
 
@@ -6,10 +6,10 @@ describe("Testing the signup view", () => {
   it("Checking the text Signup to create account", () => {
     render(
       <MemoryRouter initialEntries={["/signup"]}>
-     <SignupPage />
+        <SignupPage />
       </MemoryRouter>
     );
-    // screen.logTestingPlaygroundURL();
+    screen.logTestingPlaygroundURL();
 
     const element = screen.getByRole("heading", {
       name: /signup to create /i,
@@ -28,5 +28,15 @@ describe("Testing the signup view", () => {
     const element = screen.getByText(/already have account\?/i);
 
     expect(element).toBeInTheDocument();
+  });
+
+  it("Check if button clicked hanndler called", async () => {
+    const { findByText } = render(
+      <MemoryRouter initialEntries={["/signup"]}>
+        <SignupPage />
+      </MemoryRouter>
+    );
+
+    expect(await findByText("Sign up")).toBeInTheDocument();
   });
 });

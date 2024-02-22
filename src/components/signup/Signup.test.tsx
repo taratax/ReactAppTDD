@@ -2,10 +2,10 @@ import { render, screen } from '@testing-library/react';
 
 import { Signup} from './Signup';
 
-describe.skip('Testing  Signup component', () => {
+describe('Testing  Signup component', () => {
 
 
-    it('The button sign up should be visible on screen', () => {
+    it.skip('The button sign up should be visible on screen', () => {
         render(<Signup />)
         screen.logTestingPlaygroundURL();
       
@@ -16,6 +16,15 @@ describe.skip('Testing  Signup component', () => {
           expect(element).toBeInTheDocument()
 
     })
+
+    // it('test whether the function on button signup called', () => {
+        
+    //     const onClick = jest.fn()
+    //     render(<Signup />)
+
+    //     const buttonElement = 
+
+    // })
 
 })
 

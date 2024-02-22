@@ -15,7 +15,7 @@ export const Signup = function () {
     placeholder: "Email address",
   };
 
-  const [signupState, setSignupState] = useState([fieldsState]);
+  const [signupState, setSignupState] = useState(fieldsState);
   const fields = signupFields;
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSignupState({ ...signupState, [event.target.id]: event.target.value });

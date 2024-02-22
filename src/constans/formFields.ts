@@ -70,7 +70,7 @@ placeholder: "Username"
     type: "password",
     autoComplete: "confirm-password",
     isRequired: true,
-    placeholder: "Confirm PasswordXX"
+    placeholder: "Confirm Password"
 }
 ]
 

@@ -42,3 +42,12 @@ Added singup page.
 3. Trying to get better at type indexers
 
 There is still one type problem to be solved in Signup component's value property of its Input component.
+
+**22 Feb. 2024**
+
+1. Corrected the small issue from previous day.
+2. Added small test for signup Page.
+3. The test with checking the button. clicked needs to be prepared
+
+Wanted to add test checking if button click using fireEvent on the signup button is causing call to the function. Tried with mock function jest.fn().
+For now without success.
