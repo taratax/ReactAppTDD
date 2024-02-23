@@ -17,14 +17,16 @@ describe('Testing  Signup component', () => {
 
     })
 
-    // it('test whether the function on button signup called', () => {
+    it('test whether the function on button signup called', () => {
         
-    //     const onClick = jest.fn()
-    //     render(<Signup />)
+        // const onClick = jest.fn()
+        render(<Signup />)
 
-    //     const buttonElement = 
+        const theButton =  screen.getByRole("button")
+        expect(theButton).toBeInTheDocument()
+        expect(theButton).toHaveAttribute("type", "submit")
 
-    // })
+    })
 
 })
 

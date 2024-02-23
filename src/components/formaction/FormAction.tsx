@@ -1,6 +1,6 @@
 
 export type formActionProps = {
-    handlesubmit: (e: React.ChangeEvent<HTMLButtonElement>) => void,
+    handlesubmit: (e: React.FormEvent<HTMLFormElement>) => void ,
     type?: string
     action?: "submit" | "reset" | "button",
     text: string
@@ -13,19 +13,19 @@ export const FormAction = function({
     text
 } : formActionProps) {
     return (
-        <>
+        <form onSubmit={handlesubmit}>
         {
             type === 'Button' ?
             <button
                 type={action}
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 mt-10"
-                onSubmit={handlesubmit}
+               
             >
              {text}
             </button>
             :
             <></>
         }
-        </>
+        </form>
     )
 }

@@ -51,3 +51,12 @@ There is still one type problem to be solved in Signup component's value propert
 
 Wanted to add test checking if button click using fireEvent on the signup button is causing call to the function. Tried with mock function jest.fn().
 For now without success.
+
+**23 Feb. 2024**
+
+1. Corrected type for submit handler
+2. Added some instructions to test file for signuppage
+3. Added form element as a container for a button
+
+Still need to rethink the signup component.
+Still not tested if submit method called in test.

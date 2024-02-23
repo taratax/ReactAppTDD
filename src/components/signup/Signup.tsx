@@ -14,7 +14,7 @@ export const Signup = function () {
     isRequired: true,
     placeholder: "Email address",
   };
-
+  //
   const [signupState, setSignupState] = useState(fieldsState);
   const fields = signupFields;
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,9 +23,11 @@ export const Signup = function () {
     return null;
   };
 
-  const handleSubmit = (event: React.ChangeEvent<HTMLButtonElement>) => {
+  //const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(`GK handleSubmit signupState: ${signupState}`);
+    console.log("GK handleSubmit signupState: ", signupState);
     createAccount();
   };
 
