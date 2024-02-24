@@ -2,6 +2,7 @@ import { FormAction } from "../formaction/FormAction";
 import { Input } from "../input/Input";
 import { signupFields, loginFieldsType } from "../../constans/formFields";
 import { useState } from "react";
+import { handleSubmitSignUp } from "../../utils/utils";
 
 export const Signup = function () {
   const fieldsState: loginFieldsType = {
@@ -23,11 +24,10 @@ export const Signup = function () {
     return null;
   };
 
-  //const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("GK handleSubmit signupState: ", signupState);
+    handleSubmitSignUp({ ...signupState });
     createAccount();
   };
 

@@ -5,7 +5,7 @@ import { Signup} from './Signup';
 describe('Testing  Signup component', () => {
 
 
-    it.skip('The button sign up should be visible on screen', () => {
+    it('The button sign up should be visible on screen', () => {
         render(<Signup />)
         screen.logTestingPlaygroundURL();
       
@@ -19,12 +19,11 @@ describe('Testing  Signup component', () => {
 
     it('test whether the function on button signup called', () => {
         
-        // const onClick = jest.fn()
         render(<Signup />)
 
         const theButton =  screen.getByRole("button")
         expect(theButton).toBeInTheDocument()
-        expect(theButton).toHaveAttribute("type", "submit")
+        expect(theButton).toHaveAttribute("type", "submit") 
 
     })
 

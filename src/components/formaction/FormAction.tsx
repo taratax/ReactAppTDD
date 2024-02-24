@@ -13,7 +13,7 @@ export const FormAction = function({
     text
 } : formActionProps) {
     return (
-        <form onSubmit={handlesubmit}>
+        <form onSubmit={handlesubmit} role="form">
         {
             type === 'Button' ?
             <button

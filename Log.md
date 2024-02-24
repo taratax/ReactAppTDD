@@ -1,4 +1,4 @@
-**16 Feb 2024**
+**1. **16 Feb 2024****
 
 Configured Jest for the project.
 Followed the instructions: 
@@ -7,7 +7,7 @@ Followed the instructions:
 The very first test written with using Playground from RTL.
 
 
-**17 Feb. 2024**
+**2. **17 Feb. 2024****
 
 
 
@@ -18,24 +18,24 @@ The very first test written with using Playground from RTL.
 The whole thing needs to constant improvements.
 
 
-**18 Feb. 2024**
+**3. **18 Feb. 2024****
 
 Added singup page.
 
 
-**19 Feb. 2024**
+**4. **19 Feb. 2024****
 
 1. Making some improvements in the Login page.
 2. Added white text color for input fields when in Dark mode.
 3. Use of keyof operator.
 
-**20 Feb. 2024**
+**5. **20 Feb. 2024****
 
 1. Finishing the SignupPage component.
 2. Adding tests for Signup component.
 3. First use of MemoryRouter in the tests.
 
-**21 Feb. 2024**
+**6. **21 Feb. 2024****
 
 1. Adding prettier for better formatting.
 2. Polishing and refactoring Signup component.
@@ -43,7 +43,7 @@ Added singup page.
 
 There is still one type problem to be solved in Signup component's value property of its Input component.
 
-**22 Feb. 2024**
+**7. **22 Feb. 2024****
 
 1. Corrected the small issue from previous day.
 2. Added small test for signup Page.
@@ -52,7 +52,7 @@ There is still one type problem to be solved in Signup component's value propert
 Wanted to add test checking if button click using fireEvent on the signup button is causing call to the function. Tried with mock function jest.fn().
 For now without success.
 
-**23 Feb. 2024**
+**8. **23 Feb. 2024****
 
 1. Corrected type for submit handler
 2. Added some instructions to test file for signuppage
@@ -60,3 +60,21 @@ For now without success.
 
 Still need to rethink the signup component.
 Still not tested if submit method called in test.
+
+**9. **24 Feb. 2024****
+
+1. Added new test file for FomAction component
+2. Refactored the handle submit handler for Signup component added new folder 'utils' and created module with function imported in Signup function for subbmitting the form.
+3. Used for the first time jest.spyOn method on the newly created mentioned. function.
+
+Now I'm able to test if function was called after submit event was fired. Note that I was not able to fire the submit handler function by clicking the button. I had to use fireEvent.subbmit(...) call. Also mentioned refactoring was necessary, otherwise I could not check internal function call took place. Moving function definition to separate module and call it from within the internal function made that possible.
+
+There is still problem when I'm checking the paramter's object on spied function I do not see the values entered into input fields.
+This needs to be innvestigated, likely it has something with the fact that componnent under test calls the function passing its internal state as an argument.
+
+Resources used:
+
+https://medium.com/@patryk.nather/testing-local-functions-in-react-components-with-jest-55fe50a9032b
+
+https://medium.com/developer-rants/testing-the-react-component-state-with-jest-b0a072f70f44
+
