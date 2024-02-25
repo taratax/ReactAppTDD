@@ -3,6 +3,7 @@ import { loginFields, loginFieldsType } from "../../constans/formFields";
 import { Input } from "../input/Input";
 import { FormAction } from "../formaction/FormAction";
 import { FormExtra } from "../formextra/FormExtra";
+import { handleSubmitLogin } from "../../utils/utils";
 
 const fields = loginFields;
 
@@ -28,12 +29,9 @@ export const Login = function () {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    authenticateUser();
+    handleSubmitLogin({ ...loginState });
   };
 
-  const authenticateUser = () => {
-    console.log("GK authenticateUser is running");
-  };
 
   const mapper = function (field: loginFieldsType) {
     const indexer: keyof loginFieldsType = field.id as keyof loginFieldsType; // not very good - type assertion !...

@@ -58,7 +58,7 @@ For now without success.
 2. Added some instructions to test file for signuppage
 3. Added form element as a container for a button
 
-Still need to rethink the signup component.
+Still need to rethink the signup component.ut 
 Still not tested if submit method called in test.
 
 **9. **24 Feb. 2024****
@@ -78,3 +78,8 @@ https://medium.com/@patryk.nather/testing-local-functions-in-react-components-wi
 
 https://medium.com/developer-rants/testing-the-react-component-state-with-jest-b0a072f70f44
 
+**10. 25. Feb. 2024**
+
+It turend out that had to change from userEvent.type(username, "alamakota"); to fireEvent.change(email, { target: { value: utils.inputEmail } });
+This way I finally was able to write a test which was able to verify whether function was called with the object containing the values entered into input fields. Added some constants to a utils.js file with values for password and email used in the test.
+Refactored the Login component same way as Signup end extracted skeleton funnctions to a utils module. This allows me to write tests to verify if input values are passed correctly.
