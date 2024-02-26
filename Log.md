@@ -80,6 +80,13 @@ https://medium.com/developer-rants/testing-the-react-component-state-with-jest-b
 
 **10. 25. Feb. 2024**
 
-It turend out that had to change from userEvent.type(username, "alamakota"); to fireEvent.change(email, { target: { value: utils.inputEmail } });
-This way I finally was able to write a test which was able to verify whether function was called with the object containing the values entered into input fields. Added some constants to a utils.js file with values for password and email used in the test.
+It turned out that had to change from userEvent.type(username, "alamakota"); to fireEvent.change(email, { target: { value: utils.inputEmail } });
+This way I finally was able to write a test which verify whether function was called with the object containing the values entered into input fields. Added some constants to a utils.js file with values for password and email used in the test.
 Refactored the Login component same way as Signup end extracted skeleton funnctions to a utils module. This allows me to write tests to verify if input values are passed correctly.
+
+
+**11. 26. Feb. 2024**
+
+Today added new test to signupage with email format verification. Added new function exported from utils module. Again, creating this function as separate piece allows mee to write test.
+Next we need to create popup or other indication for user that email address is not correct.
+

@@ -26,9 +26,15 @@ export const Signup = function () {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("GK handleSubmit signupState: ", signupState);
-    handleSubmitSignUp({ ...signupState });
-    createAccount();
+
+
+    if (handleSubmitSignUp({ ...signupState }) ) {
+      createAccount();
+      return true
+    }
+    console.log(`incorrect email address`);
+    return  false
+   
   };
 
   const createAccount = () => {

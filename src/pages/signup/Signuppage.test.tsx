@@ -77,4 +77,32 @@ describe("Testing the signup view", () => {
     const confirmInput = password[1] as HTMLInputElement;
     expect(confirmInput.value).toBe(utils.inputPassword);
   });
+
+  it("The email validation function was called", () => {
+    //arrange
+    render(
+      <MemoryRouter initialEntries={["/signup"]}>
+        <SignupPage />
+      </MemoryRouter>
+    );
+
+    const spy = jest.spyOn(utils, "emailValidation");
+
+    const [, email] = screen.getAllByRole("textbox");
+    const password = screen.getAllByLabelText(/password/i);
+
+    // userEvent.type(username, "alamakota");
+
+    user.click(email);
+    fireEvent.change(email, { target: { value: utils.inputEmail } });
+
+    fireEvent.change(password[0], { target: { value: utils.inputPassword } });
+    fireEvent.change(password[1], { target: { value: utils.inputPassword } });
+
+    const theForm = screen.getByRole("form");
+    fireEvent.submit(theForm);
+
+    expect(spy).toHaveBeenCalledWith(utils.inputEmail);
+    expect(spy).toHaveReturnedWith(true as boolean);
+  });
 });

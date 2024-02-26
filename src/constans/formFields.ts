@@ -7,6 +7,7 @@ export type loginFieldsType = {
   autoComplete: string;
   isRequired: boolean;
   placeholder: string;
+  "email-address"?: string
 };
 const loginFields = [
   {
