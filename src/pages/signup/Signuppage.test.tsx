@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import user from "@testing-library/user-event";
+import user, { userEvent } from "@testing-library/user-event";
 import { SignupPage } from "./SignupPage";
 import { MemoryRouter } from "react-router-dom";
 import * as utils from "../../utils/utils";
@@ -42,8 +42,6 @@ describe("Testing the signup view", () => {
     const [username, email] = screen.getAllByRole("textbox");
     const password = screen.getAllByLabelText(/password/i);
 
-    // userEvent.type(username, "alamakota");
-
     user.click(email);
     fireEvent.change(email, { target: { value: utils.inputEmail } });
 
@@ -78,8 +76,9 @@ describe("Testing the signup view", () => {
     expect(confirmInput.value).toBe(utils.inputPassword);
   });
 
-  it("The email validation function was called", () => {
+  it("The email validation function was called", async () => {
     //arrange
+    const localuser = userEvent.setup()
     render(
       <MemoryRouter initialEntries={["/signup"]}>
         <SignupPage />
@@ -91,10 +90,9 @@ describe("Testing the signup view", () => {
     const [, email] = screen.getAllByRole("textbox");
     const password = screen.getAllByLabelText(/password/i);
 
-    // userEvent.type(username, "alamakota");
-
     user.click(email);
-    fireEvent.change(email, { target: { value: utils.inputEmail } });
+    // fireEvent.change(email, { target: { value: utils.inputEmail } });
+    await localuser.type(email,`${utils.inputEmail}`)
 
     fireEvent.change(password[0], { target: { value: utils.inputPassword } });
     fireEvent.change(password[1], { target: { value: utils.inputPassword } });
@@ -104,5 +102,6 @@ describe("Testing the signup view", () => {
 
     expect(spy).toHaveBeenCalledWith(utils.inputEmail);
     expect(spy).toHaveReturnedWith(true as boolean);
+    // expect(spy).toHaveBeenCalled();
   });
 });

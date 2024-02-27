@@ -90,3 +90,8 @@ Refactored the Login component same way as Signup end extracted skeleton funncti
 Today added new test to signupage with email format verification. Added new function exported from utils module. Again, creating this function as separate piece allows mee to write test.
 Next we need to create popup or other indication for user that email address is not correct.
 
+**12. 27. Feb. 2024**
+
+Replaced the 'fireEvent.change' with 'userEvent.type(..' as this is more RTL way. 
+Initially my test fails but I forgot to use async for the test function. Also we need to add await in the 'type' call. Now the test passes.
+Resource I found was: https://allmaddesigns.com/test-react-text-input-with-user-event/
