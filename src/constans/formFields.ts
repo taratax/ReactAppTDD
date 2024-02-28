@@ -1,3 +1,4 @@
+const portalNameDialogs = "dialogs"
 export type loginFieldsType = {
   labelText: string;
   labelFor: string;
@@ -74,4 +75,4 @@ const signupFields = [
   },
 ];
 
-export { loginFields, signupFields };
+export { loginFields, signupFields, portalNameDialogs };

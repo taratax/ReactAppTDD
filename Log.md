@@ -95,3 +95,7 @@ Next we need to create popup or other indication for user that email address is 
 Replaced the 'fireEvent.change' with 'userEvent.type(..' as this is more RTL way. 
 Initially my test fails but I forgot to use async for the test function. Also we need to add await in the 'type' call. Now the test passes.
 Resource I found was: https://allmaddesigns.com/test-react-text-input-with-user-event/
+
+**13. 28 Feb. 2024**
+
+First try of creation modal error while user clicks button on signup page with wrogly typed email address. Some problems occurred as I decided to go with portals. Was not able to render correctly new ErrorDialog component.
