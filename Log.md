@@ -99,3 +99,8 @@ Resource I found was: https://allmaddesigns.com/test-react-text-input-with-user-
 **13. 28 Feb. 2024**
 
 First try of creation modal error while user clicks button on signup page with wrogly typed email address. Some problems occurred as I decided to go with portals. Was not able to render correctly new ErrorDialog component.
+
+**14. 29. Feb. 2024**
+
+Trying to write complete test with the process of signup.
+For now I still have some issues finishing it. For example there is a problem with clicking on the link in order to move from login page to signup page. Even though The event is fired the assertion for signup page fails. It definitelly not causing redirection to the page. I added also __snapshots__ forlder for the dialog component. The idea is that when user types in wrongly formatted email address then we should see the dialog informing about it. New component 'ErrorDialog' has been created for this situation.
