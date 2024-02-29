@@ -3,6 +3,8 @@ import { Input } from "../input/Input";
 import { signupFields, loginFieldsType } from "../../constans/formFields";
 import { useState } from "react";
 import { handleSubmitSignUp } from "../../utils/utils";
+import { ErrorDialog } from "../dialogs/errors/ErrorDialog";
+import { portalNameDialogs } from "../../constans/formFields";
 
 export const Signup = function () {
   const fieldsState: loginFieldsType = {
@@ -17,6 +19,7 @@ export const Signup = function () {
   };
   //
   const [signupState, setSignupState] = useState(fieldsState);
+  const [inCorrectEmail, setInCorrectEmail] = useState(true)
   const fields = signupFields;
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSignupState({ ...signupState, [event.target.id]: event.target.value });
@@ -33,6 +36,7 @@ export const Signup = function () {
       return true
     }
     console.log(`incorrect email address`);
+    setInCorrectEmail(() => false)
     return  false
    
   };
@@ -67,6 +71,10 @@ export const Signup = function () {
         {fields.map(mapper)}
         <FormAction handlesubmit={handleSubmit} text="Sign up" />
       </div>
+      
+     { inCorrectEmail ? null : <ErrorDialog onClose={()=>{
+      setInCorrectEmail(prev => !prev)
+     }} portalName={portalNameDialogs}/>}
     </div>
   );
 };

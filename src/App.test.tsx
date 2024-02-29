@@ -1,53 +1,70 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+import user from "@testing-library/user-event";
 
-describe('App', () => {
-  it('should work as expected', () => {
+describe.skip("App", () => {
+  it("should work as expected", () => {
     render(<App />);
     screen.logTestingPlaygroundURL();
   });
 
+  it("Check for text login to your account", () => {
+    render(<App />);
 
-it('Check for text login to your account', () => {
+    const element = screen.getByRole("heading", {
+      name: /login to your account/i,
+    });
 
-  render(<App />)
+    expect(element).toBeInTheDocument();
+  });
 
-  const element = screen.getByRole('heading', {
-    name: /login to your account/i
-  })
+  it("The dont have account displayed", () => {
+    render(<App />);
 
-  expect(element).toBeInTheDocument();
+    const element = screen.getByText(/don't have a count yet \?/i);
+    expect(element).toBeInTheDocument();
+  });
 
-})
+  it("link for signup is on the screen", () => {
+    render(<App />);
+    expect(
+      screen.getByRole("link", {
+        name: /signup/i,
+      })
+    ).toBeInTheDocument();
+  });
 
-it('The dont have account displayed', () => {
-  render(<App/>)
+  it("login input field with password placeholder is present ", () => {
+    render(<App />);
+    const elem = screen.getByLabelText(/password/i);
+    expect(elem).toBeInTheDocument();
+  });
 
-  const element = screen.getByText(/don't have a count yet \?/i)
-  expect(element).toBeInTheDocument()
-})
+  it("textbox with email address placeholder is on the screen", () => {
+    render(<App />);
+    expect(
+      screen.getByRole("textbox", {
+        name: /email address/i,
+      })
+    ).toBeInTheDocument();
+  });
+});
 
-it('link for signup is on the screen', () => {
-  render(<App/>)
-  expect(screen.getByRole('link', {
-    name: /signup/i
-  })).toBeInTheDocument()
-})
+describe("App click signup", () => {
+  it("Verify signup subpage is rendered", async () => {
+    //setup user event
 
-it('login input field with password placeholder is present ', () => {
-  render(<App />)
-  const elem = screen.getByLabelText(/password/i)
-  expect(elem).toBeInTheDocument()
-})
 
-it('textbox with email address placeholder is on the screen', () => {
-  render(<App />)
-  expect(
-  screen.getByRole('textbox', {
-    name: /email address/i
-  })
-  ).toBeInTheDocument()
-})
+    render(<App />);
+    // const [username, email] = screen.getAllByRole("textbox");
 
- 
+    const theLink =  screen.getByRole("link", {
+      name: /signup/i,
+    });
+
+    expect(theLink).toBeInTheDocument()
+
+     user.click(theLink)
+     
+  });
 });

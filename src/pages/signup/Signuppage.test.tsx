@@ -136,3 +136,44 @@ describe.skip("Handling email format", () => {
     expect(spy).toHaveReturnedWith(true as boolean);
   });
 });
+
+describe('Shows error dialog when form filled not ok', () => {
+
+  it.skip('show me error dialog if email format is wrong', async () => {
+
+
+    const container = document.createElement("div");
+    document.body.appendChild(container);
+
+    const localuser = userEvent.setup();
+    render(
+      <MemoryRouter initialEntries={["/signup"]}>
+        <SignupPage />
+      </MemoryRouter>
+    );
+
+   
+
+    const [, email] = screen.getAllByRole("textbox");
+    const password = screen.getAllByLabelText(/password/i);
+
+    user.click(email);
+
+    
+    await localuser.type(email, `taratax#gmail.com`);
+
+    fireEvent.change(password[0], { target: { value: utils.inputPassword } });
+    fireEvent.change(password[1], { target: { value: utils.inputPassword } });
+
+    const theForm = screen.getByRole("form");
+     fireEvent.submit(theForm);
+
+    const theText =  screen.getByText(
+      /formularz zawiera błędy popraw je, a następnie ponownie wyślij formularz\./i
+    );
+
+    expect(theText).toBeInTheDocument();
+
+  })
+
+})
