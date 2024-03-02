@@ -9,7 +9,7 @@ describe.skip("Testing the signup view", () => {
     render(
       <MemoryRouter initialEntries={["/signup"]}>
         <SignupPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const element = screen.getByRole("heading", {
@@ -23,7 +23,7 @@ describe.skip("Testing the signup view", () => {
     render(
       <MemoryRouter initialEntries={["/signup"]}>
         <SignupPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const element = screen.getByText(/already have account\?/i);
@@ -35,7 +35,7 @@ describe.skip("Testing the signup view", () => {
     render(
       <MemoryRouter initialEntries={["/signup"]}>
         <SignupPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const spy = jest.spyOn(utils, "handleSubmitSignUp");
@@ -82,7 +82,7 @@ describe.skip("Testing the signup view", () => {
     render(
       <MemoryRouter initialEntries={["/signup"]}>
         <SignupPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const spy = jest.spyOn(utils, "emailValidation");
@@ -108,12 +108,11 @@ describe.skip("Testing the signup view", () => {
 
 describe.skip("Handling email format", () => {
   it("after button press, if email format wrong, display error dialog", async () => {
-
     const localuser = userEvent.setup();
     render(
       <MemoryRouter initialEntries={["/signup"]}>
         <SignupPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     const spy = jest.spyOn(utils, "emailValidation");
@@ -123,7 +122,6 @@ describe.skip("Handling email format", () => {
 
     user.click(email);
 
-    
     await localuser.type(email, `${utils.inputEmail}`);
 
     fireEvent.change(password[0], { target: { value: utils.inputPassword } });
@@ -137,11 +135,8 @@ describe.skip("Handling email format", () => {
   });
 });
 
-describe('Shows error dialog when form filled not ok', () => {
-
-  it.skip('show me error dialog if email format is wrong', async () => {
-
-
+describe.skip("Shows error dialog when form filled not ok", () => {
+  it.skip("show me error dialog if email format is wrong", async () => {
     const container = document.createElement("div");
     document.body.appendChild(container);
 
@@ -149,31 +144,26 @@ describe('Shows error dialog when form filled not ok', () => {
     render(
       <MemoryRouter initialEntries={["/signup"]}>
         <SignupPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
-   
-
     const [, email] = screen.getAllByRole("textbox");
-    const password = screen.getAllByLabelText(/password/i);
+    // const password = screen.getAllByLabelText(/password/i);
 
-    user.click(email);
+    localuser.click(email);
 
-    
     await localuser.type(email, `taratax#gmail.com`);
 
-    fireEvent.change(password[0], { target: { value: utils.inputPassword } });
-    fireEvent.change(password[1], { target: { value: utils.inputPassword } });
+    // fireEvent.change(password[0], { target: { value: `taratax#gmail.com` } });
+    // fireEvent.change(password[1], { target: { value: `taratax#gmail.com` } });
 
     const theForm = screen.getByRole("form");
-     fireEvent.submit(theForm);
+    fireEvent.submit(theForm);
 
-    const theText =  screen.getByText(
-      /formularz zawiera błędy popraw je, a następnie ponownie wyślij formularz\./i
+    const theText = screen.getByText(
+      /formularz zawiera błędy popraw je, a następnie ponownie wyślij formularz\./i,
     );
 
     expect(theText).toBeInTheDocument();
-
-  })
-
-})
+  });
+});

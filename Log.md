@@ -104,3 +104,8 @@ First try of creation modal error while user clicks button on signup page with w
 
 Trying to write complete test with the process of signup.
 For now I still have some issues finishing it. For example there is a problem with clicking on the link in order to move from login page to signup page. Even though The event is fired the assertion for signup page fails. It definitelly not causing redirection to the page. I added also __snapshots__ forlder for the dialog component. The idea is that when user types in wrongly formatted email address then we should see the dialog informing about it. New component 'ErrorDialog' has been created for this situation.
+
+**15. 02. Mar. 2024**
+
+After some struggle, I was able to write test where clicking signup link moves us to signup page. There was an issue with message 'Request not defined'. Some googling pointed me to a solution which requires instaling 'jest-fetch-mock' package and adding 'enableFetchMocks();' to a 'setupTest.ts. Resource: https://stackoverflow.com/questions/74497916/referenceerror-request-is-not-defined-when-testing-with-react-router-v6-4 .
+	

@@ -1,6 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
-import user from "@testing-library/user-event";
+import userEvent from "@testing-library/user-event";
+
+/**
+ * @jest-environment node
+ */
 
 describe.skip("App", () => {
   it("should work as expected", () => {
@@ -30,7 +34,7 @@ describe.skip("App", () => {
     expect(
       screen.getByRole("link", {
         name: /signup/i,
-      })
+      }),
     ).toBeInTheDocument();
   });
 
@@ -45,7 +49,7 @@ describe.skip("App", () => {
     expect(
       screen.getByRole("textbox", {
         name: /email address/i,
-      })
+      }),
     ).toBeInTheDocument();
   });
 });
@@ -53,18 +57,11 @@ describe.skip("App", () => {
 describe("App click signup", () => {
   it("Verify signup subpage is rendered", async () => {
     //setup user event
-
-
+    const user = userEvent.setup();
     render(<App />);
-    // const [username, email] = screen.getAllByRole("textbox");
-
-    const theLink =  screen.getByRole("link", {
-      name: /signup/i,
-    });
-
-    expect(theLink).toBeInTheDocument()
-
-     user.click(theLink)
-     
+    expect(screen.getByRole("link", { name: /signup/i })).toBeInTheDocument();
+    await user.click(screen.getByRole("link", { name: /signup/i }));
+    const element = screen.getByText(/signup to create /i);
+    expect(element).toBeInTheDocument();
   });
 });
