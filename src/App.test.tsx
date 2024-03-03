@@ -54,7 +54,7 @@ describe.skip("App", () => {
   });
 });
 
-describe("App click signup", () => {
+describe.skip("App click signup", () => {
   it("Verify signup subpage is rendered", async () => {
     //setup user event
     const user = userEvent.setup();

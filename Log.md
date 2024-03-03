@@ -108,4 +108,9 @@ For now I still have some issues finishing it. For example there is a problem wi
 **15. 02. Mar. 2024**
 
 After some struggle, I was able to write test where clicking signup link moves us to signup page. There was an issue with message 'Request not defined'. Some googling pointed me to a solution which requires instaling 'jest-fetch-mock' package and adding 'enableFetchMocks();' to a 'setupTest.ts. Resource: https://stackoverflow.com/questions/74497916/referenceerror-request-is-not-defined-when-testing-with-react-router-v6-4 .
+
+**16. 03. Mar. 2024**
+
+Start working on additional features validating the signup form.
+Still not finished. Added new tests and started refactoring according to the test driven development process.
 	

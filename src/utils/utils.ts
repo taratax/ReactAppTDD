@@ -1,11 +1,42 @@
 import { loginFieldsType } from "../constans/formFields";
+export type validateFormType = {
+  result: boolean;
+  error: string | null;
+};
 
 export const handleSubmitSignUp = function (signupState: loginFieldsType) {
   if (signupState["email-address"] == undefined) {
-    return false;
+    return {
+      result: false,
+      error: "missing email address",
+    };
+  }
+  if (
+    signupState.password === undefined ||
+    signupState["confirm-password"] === undefined
+  ) {
+    return {
+      result: false,
+      error: "missing password",
+    };
+  }
+  if (signupState.password !== signupState["confirm-password"]) {
+    return {
+      result: false,
+      error: "passwords do not match",
+    };
+  }
+  if (!emailValidation(signupState["email-address"])) {
+    return {
+      result: false,
+      error: "Wrong format of email address",
+    };
   }
 
-  return emailValidation(signupState["email-address"]);
+  return {
+    result: true,
+    error: null,
+  };
 };
 
 export const handleSubmitLogin = function (loginState: loginFieldsType) {

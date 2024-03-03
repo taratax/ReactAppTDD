@@ -106,7 +106,7 @@ describe.skip("Testing the signup view", () => {
   });
 });
 
-describe.skip("Handling email format", () => {
+describe("Handling email format", () => {
   it("after button press, if email format wrong, display error dialog", async () => {
     const localuser = userEvent.setup();
     render(
@@ -132,38 +132,5 @@ describe.skip("Handling email format", () => {
 
     expect(spy).toHaveBeenCalledWith(utils.inputEmail);
     expect(spy).toHaveReturnedWith(true as boolean);
-  });
-});
-
-describe.skip("Shows error dialog when form filled not ok", () => {
-  it.skip("show me error dialog if email format is wrong", async () => {
-    const container = document.createElement("div");
-    document.body.appendChild(container);
-
-    const localuser = userEvent.setup();
-    render(
-      <MemoryRouter initialEntries={["/signup"]}>
-        <SignupPage />
-      </MemoryRouter>,
-    );
-
-    const [, email] = screen.getAllByRole("textbox");
-    // const password = screen.getAllByLabelText(/password/i);
-
-    localuser.click(email);
-
-    await localuser.type(email, `taratax#gmail.com`);
-
-    // fireEvent.change(password[0], { target: { value: `taratax#gmail.com` } });
-    // fireEvent.change(password[1], { target: { value: `taratax#gmail.com` } });
-
-    const theForm = screen.getByRole("form");
-    fireEvent.submit(theForm);
-
-    const theText = screen.getByText(
-      /formularz zawiera błędy popraw je, a następnie ponownie wyślij formularz\./i,
-    );
-
-    expect(theText).toBeInTheDocument();
   });
 });

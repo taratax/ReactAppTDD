@@ -1,4 +1,4 @@
-const portalNameDialogs = "dialogs"
+const portalNameDialogs = "dialogs";
 export type loginFieldsType = {
   labelText: string;
   labelFor: string;
@@ -8,7 +8,9 @@ export type loginFieldsType = {
   autoComplete: string;
   isRequired: boolean;
   placeholder: string;
-  "email-address"?: string
+  "email-address"?: string;
+  password?: string;
+  "confirm-password"?: string;
 };
 const loginFields = [
   {
