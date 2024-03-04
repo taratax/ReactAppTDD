@@ -1,17 +1,16 @@
-import { Header } from "../../components/header/Header"
-import { Signup } from "../../components/signup/Signup"
+import { Header } from "../../components/header/Header";
+import { Signup } from "../../components/signup/Signup";
 
-export const  SignupPage = function () {
-    return (
-        <>
-        <Header 
-            heading="Signup to create account"
-            paragraph="Already have account?"
-            linkName="Login"
-            linkUrl="/"
-        />
-        <Signup />
-        </>
-    ) 
-    
-}
+export const SignupPage = function () {
+  return (
+    <>
+      <Header
+        heading="Signup to create account"
+        paragraph="Already have account?"
+        linkName="Login"
+        linkUrl="/"
+      />
+      <Signup />
+    </>
+  );
+};

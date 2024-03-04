@@ -8,6 +8,7 @@ export type loginFieldsType = {
   autoComplete: string;
   isRequired: boolean;
   placeholder: string;
+  username?: string;
   "email-address"?: string;
   password?: string;
   "confirm-password"?: string;

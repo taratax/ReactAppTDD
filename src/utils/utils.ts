@@ -4,11 +4,27 @@ export type validateFormType = {
   error: string | null;
 };
 
+export const EMAIL_MISS_ERROR = "Brakuje adresu email";
+export const EMAIL_BAD_ERROR = "Adres email jest niepoprawny";
+export const CONFIRM_PASS_ERROR = "Podane hasła nie są takie same";
+export const MISSING_PASSWD_ERROR = "Brakuje hasła";
+export const MISSING_USERNAME_ERROR = "Brak nazwy uzytkownika";
+
 export const handleSubmitSignUp = function (signupState: loginFieldsType) {
+  if (
+    signupState["username"] == undefined ||
+    signupState["username"].length === 0
+  ) {
+    return {
+      result: false,
+      error: MISSING_USERNAME_ERROR,
+    };
+  }
+
   if (signupState["email-address"] == undefined) {
     return {
       result: false,
-      error: "missing email address",
+      error: EMAIL_MISS_ERROR,
     };
   }
   if (
@@ -17,19 +33,19 @@ export const handleSubmitSignUp = function (signupState: loginFieldsType) {
   ) {
     return {
       result: false,
-      error: "missing password",
+      error: MISSING_PASSWD_ERROR,
     };
   }
   if (signupState.password !== signupState["confirm-password"]) {
     return {
       result: false,
-      error: "passwords do not match",
+      error: CONFIRM_PASS_ERROR,
     };
   }
   if (!emailValidation(signupState["email-address"])) {
     return {
       result: false,
-      error: "Wrong format of email address",
+      error: EMAIL_BAD_ERROR,
     };
   }
 
@@ -40,12 +56,11 @@ export const handleSubmitSignUp = function (signupState: loginFieldsType) {
 };
 
 export const handleSubmitLogin = function (loginState: loginFieldsType) {
-  console.log("GK handleSubmitLogin called: ", loginState);
   authenticateUser(loginState);
 };
 
 const authenticateUser = (theCredentials: loginFieldsType) => {
-  console.log("GK authenticateUser is running", theCredentials);
+  return theCredentials;
 };
 
 export const emailValidation = (theEmai: string): boolean => {
@@ -61,3 +76,4 @@ export const emailValidation = (theEmai: string): boolean => {
 // test values used as input
 export const inputPassword = "duperele";
 export const inputEmail = "taratax@gmail.com";
+export const badEmail = "taratax#gmail.com";

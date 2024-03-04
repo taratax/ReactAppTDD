@@ -113,4 +113,7 @@ After some struggle, I was able to write test where clicking signup link moves u
 
 Start working on additional features validating the signup form.
 Still not finished. Added new tests and started refactoring according to the test driven development process.
-	
+
+**17. 04. Mar. 2024**
+Finally successfully created test with component rendered within portal. Now we can check error message correctnes on the signup page.
+Tests in the suite can check text messages accordingly to values entered into input fields.

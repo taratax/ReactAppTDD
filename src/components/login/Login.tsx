@@ -23,7 +23,6 @@ export const Login = function () {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLoginState({ ...loginState, [event.target.id]: event.target.value });
-    console.log(event.target.value);
     return null;
   };
 
@@ -31,7 +30,6 @@ export const Login = function () {
     event.preventDefault();
     handleSubmitLogin({ ...loginState });
   };
-
 
   const mapper = function (field: loginFieldsType) {
     const indexer: keyof loginFieldsType = field.id as keyof loginFieldsType; // not very good - type assertion !...

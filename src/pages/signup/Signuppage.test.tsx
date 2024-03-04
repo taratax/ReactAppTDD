@@ -3,6 +3,13 @@ import user, { userEvent } from "@testing-library/user-event";
 import { SignupPage } from "./SignupPage";
 import { MemoryRouter } from "react-router-dom";
 import * as utils from "../../utils/utils";
+import { portalNameDialogs } from "../../constans/formFields";
+
+const addPortalDivToBody = (portalId: string): void => {
+  const portalDiv = document.createElement("div");
+  portalDiv.setAttribute("id", portalId);
+  document.body.appendChild(portalDiv);
+};
 
 describe.skip("Testing the signup view", () => {
   it.skip("Checking the text Signup to create account", () => {
@@ -107,7 +114,19 @@ describe.skip("Testing the signup view", () => {
 });
 
 describe("Handling email format", () => {
-  it("after button press, if email format wrong, display error dialog", async () => {
+  beforeEach(() => {
+    addPortalDivToBody(portalNameDialogs);
+  });
+
+  afterEach(() => {
+    // Clean up the portal div from the document body
+    const portalDiv = document.getElementById(portalNameDialogs);
+    if (portalDiv) {
+      document.body.removeChild(portalDiv);
+    }
+  });
+
+  it("when typed in only email field, then show error about missing username", async () => {
     const localuser = userEvent.setup();
     render(
       <MemoryRouter initialEntries={["/signup"]}>
@@ -115,14 +134,14 @@ describe("Handling email format", () => {
       </MemoryRouter>,
     );
 
-    const spy = jest.spyOn(utils, "emailValidation");
+    // const spy = jest.spyOn(utils, "emailValidation");
 
     const [, email] = screen.getAllByRole("textbox");
     const password = screen.getAllByLabelText(/password/i);
 
     user.click(email);
 
-    await localuser.type(email, `${utils.inputEmail}`);
+    await localuser.type(email, `${utils.badEmail}`);
 
     fireEvent.change(password[0], { target: { value: utils.inputPassword } });
     fireEvent.change(password[1], { target: { value: utils.inputPassword } });
@@ -130,7 +149,72 @@ describe("Handling email format", () => {
     const theForm = screen.getByRole("form");
     fireEvent.submit(theForm);
 
-    expect(spy).toHaveBeenCalledWith(utils.inputEmail);
-    expect(spy).toHaveReturnedWith(true as boolean);
+    // screen.logTestingPlaygroundURL();
+
+    expect(
+      screen.getByText(new RegExp(utils.MISSING_USERNAME_ERROR, "i")),
+    ).toBeInTheDocument();
+  });
+
+  it("When typed username and bad email but not any other field then show bad email error", async () => {
+    const localuser = userEvent.setup();
+    render(
+      <MemoryRouter initialEntries={["/signup"]}>
+        <SignupPage />
+      </MemoryRouter>,
+    );
+
+    // const spy = jest.spyOn(utils, "emailValidation");
+
+    const [username, email] = screen.getAllByRole("textbox");
+    const password = screen.getAllByLabelText(/password/i);
+
+    user.click(email);
+
+    await localuser.type(email, `${utils.badEmail}`);
+
+    user.click(username);
+    await localuser.type(username, `theuser`);
+
+    fireEvent.change(password[0], { target: { value: utils.inputPassword } });
+    fireEvent.change(password[1], { target: { value: utils.inputPassword } });
+
+    const theForm = screen.getByRole("form");
+    fireEvent.submit(theForm);
+
+    expect(
+      screen.getByText(new RegExp(utils.EMAIL_BAD_ERROR, "i")),
+    ).toBeInTheDocument();
+  });
+
+  it("Show Error when password do not match", async () => {
+    const localuser = userEvent.setup();
+    render(
+      <MemoryRouter initialEntries={["/signup"]}>
+        <SignupPage />
+      </MemoryRouter>,
+    );
+
+    // const spy = jest.spyOn(utils, "emailValidation");
+
+    const [username, email] = screen.getAllByRole("textbox");
+    const password = screen.getAllByLabelText(/password/i);
+
+    user.click(email);
+
+    await localuser.type(email, `${utils.badEmail}`);
+
+    user.click(username);
+    await localuser.type(username, `theuser`);
+
+    fireEvent.change(password[0], { target: { value: utils.inputPassword } });
+    fireEvent.change(password[1], { target: { value: `alamakota` } });
+
+    const theForm = screen.getByRole("form");
+    fireEvent.submit(theForm);
+
+    expect(
+      screen.getByText(new RegExp(utils.CONFIRM_PASS_ERROR, "i")),
+    ).toBeInTheDocument();
   });
 });

@@ -17,16 +17,16 @@ export const Signup = function () {
     isRequired: true,
     placeholder: "Email address",
   };
-  //
+
   const [signupState, setSignupState] = useState(fieldsState);
-  const [inCorrectForm, setInCorrectForm] = useState({
+  const [incorrectForm, setIncorrectForm] = useState({
     result: false,
     error: null,
   } as validateFormType);
+
   const fields = signupFields;
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSignupState({ ...signupState, [event.target.id]: event.target.value });
-    console.log(event.target.value);
     return null;
   };
 
@@ -39,8 +39,7 @@ export const Signup = function () {
       return true;
     }
 
-    console.log(`incorrect email address`);
-    setInCorrectForm((prev) => ({
+    setIncorrectForm((prev) => ({
       ...prev,
       result: validatorObject.result,
       error: validatorObject.error,
@@ -48,13 +47,11 @@ export const Signup = function () {
     return false;
   };
 
-  const createAccount = () => {
-    console.log(`createAccount called`);
-  };
+  const createAccount = () => {};
 
   const mapper = function (field: loginFieldsType) {
     const indexer: keyof loginFieldsType = field.id as keyof loginFieldsType; // not very good - type assertion !...
-    console.log("GK signup render is running");
+
     return (
       <Input
         key={field.id}
@@ -79,14 +76,19 @@ export const Signup = function () {
         <FormAction handlesubmit={handleSubmit} text="Sign up" />
       </div>
 
-      {inCorrectForm.error ? null : (
+      {incorrectForm.error ? (
         <ErrorDialog
           onClose={() => {
-            setInCorrectForm((prev) => !prev);
+            setIncorrectForm((prev) => ({
+              ...prev,
+              result: false,
+              error: null,
+            }));
           }}
           portalName={portalNameDialogs}
+          errorTextMsg={incorrectForm.error}
         />
-      )}
+      ) : null}
     </div>
   );
 };
