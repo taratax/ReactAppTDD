@@ -1,5 +1,5 @@
 const portalNameDialogs = "dialogs";
-export type loginFieldsType = {
+export type LoginFieldsType = {
   labelText: string;
   labelFor: string;
   id: string;

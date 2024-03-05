@@ -117,3 +117,9 @@ Still not finished. Added new tests and started refactoring according to the tes
 **17. 04. Mar. 2024**
 Finally successfully created test with component rendered within portal. Now we can check error message correctnes on the signup page.
 Tests in the suite can check text messages accordingly to values entered into input fields.
+
+**18. 05. Mar. 2024**
+
+Today We added some refactor on ( still ) signup page. Added new Dialog context showing modal after account creation success.
+The function for creation account is still a mock. It is called when form validation finishes with success.
+Today we did not write a test.

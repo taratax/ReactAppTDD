@@ -1,4 +1,4 @@
-import { loginFieldsType } from "../constans/formFields";
+import { LoginFieldsType } from "../constans/formFields";
 export type validateFormType = {
   result: boolean;
   error: string | null;
@@ -10,56 +10,44 @@ export const CONFIRM_PASS_ERROR = "Podane hasła nie są takie same";
 export const MISSING_PASSWD_ERROR = "Brakuje hasła";
 export const MISSING_USERNAME_ERROR = "Brak nazwy uzytkownika";
 
-export const handleSubmitSignUp = function (signupState: loginFieldsType) {
-  if (
-    signupState["username"] == undefined ||
-    signupState["username"].length === 0
-  ) {
-    return {
-      result: false,
-      error: MISSING_USERNAME_ERROR,
-    };
+export const handleSubmitSignUp = (signupState: LoginFieldsType) => {
+  // Check for missing username
+  if (!signupState.username?.trim()) {
+    return { result: false, error: MISSING_USERNAME_ERROR };
   }
 
-  if (signupState["email-address"] == undefined) {
-    return {
-      result: false,
-      error: EMAIL_MISS_ERROR,
-    };
+  // Check for missing email address
+  if (!signupState["email-address"]?.trim()) {
+    return { result: false, error: EMAIL_MISS_ERROR };
   }
+
+  // Check for missing password or confirm password
   if (
-    signupState.password === undefined ||
-    signupState["confirm-password"] === undefined
+    !signupState.password?.trim() ||
+    !signupState["confirm-password"]?.trim()
   ) {
-    return {
-      result: false,
-      error: MISSING_PASSWD_ERROR,
-    };
+    return { result: false, error: MISSING_PASSWD_ERROR };
   }
+
+  // Check if passwords match
   if (signupState.password !== signupState["confirm-password"]) {
-    return {
-      result: false,
-      error: CONFIRM_PASS_ERROR,
-    };
-  }
-  if (!emailValidation(signupState["email-address"])) {
-    return {
-      result: false,
-      error: EMAIL_BAD_ERROR,
-    };
+    return { result: false, error: CONFIRM_PASS_ERROR };
   }
 
-  return {
-    result: true,
-    error: null,
-  };
+  // Validate email format
+  if (!emailValidation(signupState["email-address"])) {
+    return { result: false, error: EMAIL_BAD_ERROR };
+  }
+
+  // If all checks pass
+  return { result: true, error: null };
 };
 
-export const handleSubmitLogin = function (loginState: loginFieldsType) {
+export const handleSubmitLogin = function (loginState: LoginFieldsType) {
   authenticateUser(loginState);
 };
 
-const authenticateUser = (theCredentials: loginFieldsType) => {
+const authenticateUser = (theCredentials: LoginFieldsType) => {
   return theCredentials;
 };
 

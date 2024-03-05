@@ -1,13 +1,13 @@
 import { FormAction } from "../formaction/FormAction";
 import { Input } from "../input/Input";
-import { signupFields, loginFieldsType } from "../../constans/formFields";
+import { signupFields, LoginFieldsType } from "../../constans/formFields";
 import { useState } from "react";
 import { handleSubmitSignUp, validateFormType } from "../../utils/utils";
 import { ErrorDialog } from "../dialogs/errors/ErrorDialog";
 import { portalNameDialogs } from "../../constans/formFields";
 
 export const Signup = function () {
-  const fieldsState: loginFieldsType = {
+  const fieldsState: LoginFieldsType = {
     labelText: "Email address",
     labelFor: "email-address",
     id: "email-address",
@@ -23,6 +23,8 @@ export const Signup = function () {
     result: false,
     error: null,
   } as validateFormType);
+
+  const [account, setAccount] = useState(false);
 
   const fields = signupFields;
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,10 +49,12 @@ export const Signup = function () {
     return false;
   };
 
-  const createAccount = () => {};
+  const createAccount = () => {
+    setAccount(true);
+  };
 
-  const mapper = function (field: loginFieldsType) {
-    const indexer: keyof loginFieldsType = field.id as keyof loginFieldsType; // not very good - type assertion !...
+  const mapper = function (field: LoginFieldsType) {
+    const indexer: keyof LoginFieldsType = field.id as keyof LoginFieldsType; // not very good - type assertion !...
 
     return (
       <Input
@@ -68,6 +72,16 @@ export const Signup = function () {
       />
     );
   };
+  const onClose = function () {
+    setIncorrectForm((prev) => ({
+      ...prev,
+      result: false,
+      error: null,
+    }));
+    if (account) {
+      setAccount(false);
+    }
+  };
 
   return (
     <div className="mt-8 space-y-6">
@@ -78,15 +92,17 @@ export const Signup = function () {
 
       {incorrectForm.error ? (
         <ErrorDialog
-          onClose={() => {
-            setIncorrectForm((prev) => ({
-              ...prev,
-              result: false,
-              error: null,
-            }));
-          }}
+          onClose={onClose}
           portalName={portalNameDialogs}
           errorTextMsg={incorrectForm.error}
+        />
+      ) : null}
+      {account ? (
+        <ErrorDialog
+          onClose={onClose}
+          portalName={portalNameDialogs}
+          errorTextMsg="Konto zostało utworzone!"
+          headerText="Sukcess"
         />
       ) : null}
     </div>
