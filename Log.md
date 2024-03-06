@@ -123,3 +123,6 @@ Tests in the suite can check text messages accordingly to values entered into in
 Today We added some refactor on ( still ) signup page. Added new Dialog context showing modal after account creation success.
 The function for creation account is still a mock. It is called when form validation finishes with success.
 Today we did not write a test.
+
+**19. 06. Mar. 2024**
+Adding Storybook to the project.
