@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { loginFields, loginFieldsType } from "../../constans/formFields";
+import { loginFields, LoginFieldsType } from "../../constans/formFields";
 import { Input } from "../input/Input";
 import { FormAction } from "../formaction/FormAction";
 import { FormExtra } from "../formextra/FormExtra";
@@ -8,7 +8,7 @@ import { handleSubmitLogin } from "../../utils/utils";
 const fields = loginFields;
 
 export const Login = function () {
-  const fieldsState: loginFieldsType = {
+  const fieldsState: LoginFieldsType = {
     labelText: "Email address",
     labelFor: "email-address",
     id: "email-address",
@@ -31,8 +31,8 @@ export const Login = function () {
     handleSubmitLogin({ ...loginState });
   };
 
-  const mapper = function (field: loginFieldsType) {
-    const indexer: keyof loginFieldsType = field.id as keyof loginFieldsType; // not very good - type assertion !...
+  const mapper = function (field: LoginFieldsType) {
+    const indexer: keyof LoginFieldsType = field.id as keyof LoginFieldsType; // not very good - type assertion !...
 
     return (
       <Input

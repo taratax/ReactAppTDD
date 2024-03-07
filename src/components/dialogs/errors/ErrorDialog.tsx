@@ -25,9 +25,6 @@ export const ErrorDialog = (props: ErrorDialogProps) => {
           </div>
           <button
             onClick={props.onClose}
-            text-white
-            bg-purple-600
-            hover:bg-purple-700
             className="px-44 py-2 text-white rounded bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2  focus:ring-opacity-50"
           >
             OK

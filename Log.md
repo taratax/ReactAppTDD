@@ -126,3 +126,7 @@ Today we did not write a test.
 
 **19. 06. Mar. 2024**
 Adding Storybook to the project.
+
+**20. 07. Mar. 2024**
+
+Refactoring, adding fixes error dialog test suite.
