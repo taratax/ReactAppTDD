@@ -130,3 +130,7 @@ Adding Storybook to the project.
 **20. 07. Mar. 2024**
 
 Refactoring, adding fixes error dialog test suite.
+
+**21. 08. Mar. 2024**
+Starting, not finished, adding page object for tests for signum page.
+The goal is to see if we can add such a pattern in relatively simple scenario.
