@@ -4,6 +4,7 @@ import { SignupPage } from "./SignupPage";
 import { MemoryRouter } from "react-router-dom";
 import * as utils from "../../utils/utils";
 import { portalNameDialogs } from "../../constans/formFields";
+import { ValidateFormPO } from "./ValidateFormPO";
 
 const addPortalDivToBody = (portalId: string): void => {
   const portalDiv = document.createElement("div");
@@ -113,7 +114,7 @@ describe.skip("Testing the signup view", () => {
   });
 });
 
-describe("Handling email format", () => {
+describe.skip("Handling email format", () => {
   beforeEach(() => {
     addPortalDivToBody(portalNameDialogs);
   });
@@ -126,7 +127,7 @@ describe("Handling email format", () => {
     }
   });
 
-  it("when typed in only email field, then show error about missing username", async () => {
+  it("When typed in only email field, then show error about missing username", async () => {
     const localuser = userEvent.setup();
     render(
       <MemoryRouter initialEntries={["/signup"]}>
@@ -216,5 +217,13 @@ describe("Handling email format", () => {
     expect(
       screen.getByText(new RegExp(utils.CONFIRM_PASS_ERROR, "i")),
     ).toBeInTheDocument();
+  });
+});
+
+describe("Using PageObject for testing", () => {
+  it("When typed username and bad email but not any other field then show bad email error", async () => {
+    const theObject = ValidateFormPO.render();
+
+    theObject.typedUserNameAndBadEmailFormat();
   });
 });

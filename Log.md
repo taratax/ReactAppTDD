@@ -134,3 +134,7 @@ Refactoring, adding fixes error dialog test suite.
 **21. 08. Mar. 2024**
 Starting, not finished, adding page object for tests for signum page.
 The goal is to see if we can add such a pattern in relatively simple scenario.
+
+**22. 09. Mar. 2024**
+Another try with page object pattern, still not finished successfully.
+My test with PO use always pass, need to look into more.
