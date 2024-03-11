@@ -14,7 +14,6 @@ import * as utils from "../../utils/utils";
 
 export class ValidateFormPO {
   private elements: {
-    // submitButton: HTMLElement;
     theForm: HTMLElement;
     UsernameInput: HTMLInputElement;
     EmailInput: HTMLInputElement;
@@ -22,20 +21,27 @@ export class ValidateFormPO {
     ConfirmPwdInput: HTMLInputElement;
   };
 
-  protected constructor(protected container: HTMLElement) {
-    this.elements = {
-      theForm: getByRole(container, "form"),
-      UsernameInput: getAllByRole(container, "textbox")[0] as HTMLInputElement,
-      EmailInput: getAllByRole(container, "textbox")[1] as HTMLInputElement,
-      PasswordInput: getAllByLabelText(
-        container,
-        /password/i,
-      )[0] as HTMLInputElement,
-      ConfirmPwdInput: getAllByLabelText(
-        container,
-        /password/i,
-      )[1] as HTMLInputElement,
+  private elementsByVariousSelectors(container: HTMLElement) {
+    return {
+      get theForm() {
+        return getByRole(container, "form");
+      },
+      get UsernameInput() {
+        return getAllByRole(container, "textbox")[0] as HTMLInputElement;
+      },
+      get EmailInput() {
+        return getAllByRole(container, "textbox")[1] as HTMLInputElement;
+      },
+      get PasswordInput() {
+        return getAllByLabelText(container, /password/i)[0] as HTMLInputElement;
+      },
+      get ConfirmPwdInput() {
+        return getAllByLabelText(container, /password/i)[1] as HTMLInputElement;
+      },
     };
+  }
+  protected constructor(protected container: HTMLElement) {
+    this.elements = this.elementsByVariousSelectors(container);
   }
 
   static render() {
@@ -67,6 +73,10 @@ export class ValidateFormPO {
     //     screen.getByText(new RegExp(utils.EMAIL_BAD_ERROR, "i")),
     //   ).toBeInTheDocument();
     // });
+    // return findByText(this.container, utils.MISSING_USERNAME_ERROR);
+  }
+
+  async expectedErrorToBeDisplayed() {
     return findByText(this.container, utils.MISSING_USERNAME_ERROR);
   }
 }

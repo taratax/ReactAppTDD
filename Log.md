@@ -138,3 +138,6 @@ The goal is to see if we can add such a pattern in relatively simple scenario.
 **22. 09. Mar. 2024**
 Another try with page object pattern, still not finished successfully.
 My test with PO use always pass, need to look into more.
+
+**23. 11. Mar. 2024**
+Continuation with Page object pattern in testing the signup page

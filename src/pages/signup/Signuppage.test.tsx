@@ -221,9 +221,25 @@ describe.skip("Handling email format", () => {
 });
 
 describe("Using PageObject for testing", () => {
-  it("When typed username and bad email but not any other field then show bad email error", async () => {
-    const theObject = ValidateFormPO.render();
+  beforeEach(() => {
+    addPortalDivToBody(portalNameDialogs);
+  });
 
-    theObject.typedUserNameAndBadEmailFormat();
+  afterEach(() => {
+    // Clean up the portal div from the document body
+    const portalDiv = document.getElementById(portalNameDialogs);
+    if (portalDiv) {
+      document.body.removeChild(portalDiv);
+    }
+  });
+
+  it("When typed username and bad email but not any other field then show bad email error", async () => {
+    // given
+    const theObject = ValidateFormPO.render();
+    //when
+    await theObject.typedUserNameAndBadEmailFormat();
+
+    //then
+    await theObject.expectedErrorToBeDisplayed();
   });
 });
