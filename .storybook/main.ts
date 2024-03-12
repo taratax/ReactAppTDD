@@ -1,7 +1,12 @@
 import type { StorybookConfig } from "@storybook/react-vite";
-
+import globby from "globby";
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  // stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: globby.sync(
+    ["../src/**/*.stories.@(js|jsx|ts|tsx)", "!../src/**/node_modules/**/*"],
+    { cwd: "./.storybook" },
+  ),
+  staticDirs: ["../public"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",

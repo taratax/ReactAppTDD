@@ -141,3 +141,6 @@ My test with PO use always pass, need to look into more.
 
 **23. 11. Mar. 2024**
 Continuation with Page object pattern in testing the signup page
+
+**24. 12. Mar. 2024**
+Upgrade of Storybook. Adding first story of Signup Page.
