@@ -144,3 +144,8 @@ Continuation with Page object pattern in testing the signup page
 
 **24. 12. Mar. 2024**
 Upgrade of Storybook. Adding first story of Signup Page.
+
+**25. 14. Mar. 2024**
+First small success with creating story for StoryBook with the header component.
+Initially it was not posible due to use of router. Installed the package:
+https://www.npmjs.com/package/storybook-addon-remix-react-router

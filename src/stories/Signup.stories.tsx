@@ -1,18 +1,11 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { SignupPage } from "../pages/signup/SignupPage";
 
-const meta = {
+export default {
   component: SignupPage,
-  title: "Signup page",
+  title: "Signup page component",
   tags: ["autodocs"],
-} satisfies Meta<typeof SignupPage>;
+};
 
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Primary: Story = {
-  args: {
-    primary: true,
-    label: "Button",
-  },
+export const SignupPageComponent = {
+  args: {},
 };
