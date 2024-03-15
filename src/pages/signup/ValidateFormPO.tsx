@@ -67,13 +67,6 @@ export class ValidateFormPO {
 
     const theForm = screen.getByRole("form");
     fireEvent.submit(theForm);
-
-    // await waitFor(() => {
-    //   expect(
-    //     screen.getByText(new RegExp(utils.EMAIL_BAD_ERROR, "i")),
-    //   ).toBeInTheDocument();
-    // });
-    // return findByText(this.container, utils.MISSING_USERNAME_ERROR);
   }
 
   async expectedErrorToBeDisplayed() {

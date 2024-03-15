@@ -149,3 +149,6 @@ Upgrade of Storybook. Adding first story of Signup Page.
 First small success with creating story for StoryBook with the header component.
 Initially it was not posible due to use of router. Installed the package:
 https://www.npmjs.com/package/storybook-addon-remix-react-router
+
+**26. 15. Mar. 2024**
+Added stories for SignupPage and LoginPage.
