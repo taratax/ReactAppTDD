@@ -1,13 +1,13 @@
 import {
   render,
   screen,
-  fireEvent,
+  // fireEvent,
   getByRole,
   getAllByRole,
   getAllByLabelText,
-  findByText,
+  // findByText,
 } from "@testing-library/react";
-import user, { userEvent } from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import { SignupPage } from "./SignupPage";
 import { MemoryRouter } from "react-router-dom";
 import * as utils from "../../utils/utils";
@@ -53,23 +53,61 @@ export class ValidateFormPO {
     return new ValidateFormPO(container as HTMLElement);
   }
 
-  async typedUserNameAndBadEmailFormat() {
-    const localuser = userEvent.setup();
-    user.click(this.elements.EmailInput);
-    await localuser.type(this.elements.EmailInput, `${utils.badEmail}`);
+  async typedUserNamePasswordsAndBadEmailFormat() {
+    const localUser = userEvent.setup();
 
-    fireEvent.change(this.elements.PasswordInput, {
-      target: { value: utils.inputPassword },
-    });
-    fireEvent.change(this.elements.ConfirmPwdInput, {
-      target: { value: utils.inputPassword },
-    });
+    // Assuming utils.badEmail and utils.inputPassword are predefined constants
+    await localUser.type(this.elements.UsernameInput, "testUser"); // Simulate typing a username
+    await localUser.type(this.elements.EmailInput, utils.badEmail); // Simulate typing a bad email
+    await localUser.type(this.elements.PasswordInput, utils.inputPassword);
+    await localUser.type(this.elements.ConfirmPwdInput, utils.inputPassword);
+    screen.logTestingPlaygroundURL();
 
-    const theForm = screen.getByRole("form");
-    fireEvent.submit(theForm);
+    // await localUser.click(screen.getByRole("button", { name: /submit/i })); // Assuming your form has a submit button with an accessible name
+    await userEvent.click(screen.getByRole("button", { name: /sign up/i }));
   }
 
-  async expectedErrorToBeDisplayed() {
-    return findByText(this.container, utils.MISSING_USERNAME_ERROR);
+  async typedUserNameOnly() {
+    const localUser = userEvent.setup();
+
+    // Assuming utils.badEmail and utils.inputPassword are predefined constants
+    await localUser.type(this.elements.UsernameInput, "testUser"); // Simulate typing a username
+
+    await userEvent.click(screen.getByRole("button", { name: /sign up/i }));
+  }
+
+  async typedEmailAddressOnly() {
+    const localUser = userEvent.setup();
+
+    // Assuming utils.badEmail and utils.inputPassword are predefined constants
+    await localUser.type(this.elements.EmailInput, utils.badEmail); // Simulate typing a username
+
+    await userEvent.click(screen.getByRole("button", { name: /sign up/i }));
+  }
+
+  async allFieldsButUserNameNameTypedIn() {
+    const localUser = userEvent.setup();
+
+    await localUser.type(this.elements.EmailInput, utils.badEmail); // Simulate typing a bad email
+    await localUser.type(this.elements.PasswordInput, utils.inputPassword);
+    await localUser.type(this.elements.ConfirmPwdInput, utils.inputPassword);
+
+    await userEvent.click(screen.getByRole("button", { name: /sign up/i }));
+  }
+
+  async expectedBadEmailErrorToBeDisplayed() {
+    // Ensure the error message is awaited and asserted properly
+    expect(await screen.findByText(utils.EMAIL_BAD_ERROR)).toBeInTheDocument();
+  }
+
+  async expectedMissingEmailToBeDisplayed() {
+    // Ensure the error message is awaited and asserted properly
+    expect(await screen.findByText(utils.EMAIL_MISS_ERROR)).toBeInTheDocument();
+  }
+
+  async expectedMissingUserNameErrorDisplayed() {
+    expect(
+      await screen.findByText(utils.MISSING_USERNAME_ERROR),
+    ).toBeInTheDocument();
   }
 }

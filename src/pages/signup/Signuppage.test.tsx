@@ -233,13 +233,41 @@ describe("Using PageObject for testing", () => {
     }
   });
 
-  it("When typed username and bad email but not any other field then show bad email error", async () => {
+  it("When typed username, passwords and bad email then show bad email error", async () => {
     // given
     const theObject = ValidateFormPO.render();
     //when
-    await theObject.typedUserNameAndBadEmailFormat();
+    await theObject.typedUserNamePasswordsAndBadEmailFormat();
 
     //then
-    await theObject.expectedErrorToBeDisplayed();
+    await theObject.expectedBadEmailErrorToBeDisplayed();
+  });
+
+  it("User types only username nothing  more, missing email msg expected", async () => {
+    //given
+    const theObject = ValidateFormPO.render();
+    //when
+    await theObject.typedUserNameOnly();
+
+    //then
+    await theObject.expectedMissingEmailToBeDisplayed();
+  });
+
+  it("Type only  email field => missing username message appear", async () => {
+    //given
+    const theObject = ValidateFormPO.render();
+    //when
+    await theObject.typedEmailAddressOnly();
+    //then
+    await theObject.expectedMissingUserNameErrorDisplayed();
+  });
+
+  it("All fields filled in but username => missing username message appear", async () => {
+    //given
+    const theObject = ValidateFormPO.render();
+    //when
+    await theObject.allFieldsButUserNameNameTypedIn();
+    //then
+    await theObject.expectedMissingUserNameErrorDisplayed();
   });
 });

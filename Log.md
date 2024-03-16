@@ -152,3 +152,7 @@ https://www.npmjs.com/package/storybook-addon-remix-react-router
 
 **26. 15. Mar. 2024**
 Added stories for SignupPage and LoginPage.
+
+**27. 16. Mar. 2024**
+
+Improved tests with PO pattern.
