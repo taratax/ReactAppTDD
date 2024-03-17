@@ -156,3 +156,7 @@ Added stories for SignupPage and LoginPage.
 **27. 16. Mar. 2024**
 
 Improved tests with PO pattern.
+
+**28. 17. Mar. 2024**
+
+Some cleanup for the tests, use test-id for err msg check. Need to improve it next time.

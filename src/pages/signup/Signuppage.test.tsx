@@ -153,7 +153,9 @@ describe.skip("Handling email format", () => {
     // screen.logTestingPlaygroundURL();
 
     expect(
-      screen.getByText(new RegExp(utils.MISSING_USERNAME_ERROR, "i")),
+      screen.getByText(
+        new RegExp(utils.signupErrMsg.MISSING_USERNAME_ERROR, "i"),
+      ),
     ).toBeInTheDocument();
   });
 
@@ -164,8 +166,6 @@ describe.skip("Handling email format", () => {
         <SignupPage />
       </MemoryRouter>,
     );
-
-    // const spy = jest.spyOn(utils, "emailValidation");
 
     const [username, email] = screen.getAllByRole("textbox");
     const password = screen.getAllByLabelText(/password/i);
@@ -184,7 +184,7 @@ describe.skip("Handling email format", () => {
     fireEvent.submit(theForm);
 
     expect(
-      screen.getByText(new RegExp(utils.EMAIL_BAD_ERROR, "i")),
+      screen.getByText(new RegExp(utils.signupErrMsg.EMAIL_BAD_ERROR, "i")),
     ).toBeInTheDocument();
   });
 
@@ -195,8 +195,6 @@ describe.skip("Handling email format", () => {
         <SignupPage />
       </MemoryRouter>,
     );
-
-    // const spy = jest.spyOn(utils, "emailValidation");
 
     const [username, email] = screen.getAllByRole("textbox");
     const password = screen.getAllByLabelText(/password/i);
@@ -215,7 +213,7 @@ describe.skip("Handling email format", () => {
     fireEvent.submit(theForm);
 
     expect(
-      screen.getByText(new RegExp(utils.CONFIRM_PASS_ERROR, "i")),
+      screen.getByText(new RegExp(utils.signupErrMsg.CONFIRM_PASS_ERROR, "i")),
     ).toBeInTheDocument();
   });
 });
@@ -238,7 +236,6 @@ describe("Using PageObject for testing", () => {
     const theObject = ValidateFormPO.render();
     //when
     await theObject.typedUserNamePasswordsAndBadEmailFormat();
-
     //then
     await theObject.expectedBadEmailErrorToBeDisplayed();
   });
@@ -248,7 +245,6 @@ describe("Using PageObject for testing", () => {
     const theObject = ValidateFormPO.render();
     //when
     await theObject.typedUserNameOnly();
-
     //then
     await theObject.expectedMissingEmailToBeDisplayed();
   });
@@ -269,5 +265,14 @@ describe("Using PageObject for testing", () => {
     await theObject.allFieldsButUserNameNameTypedIn();
     //then
     await theObject.expectedMissingUserNameErrorDisplayed();
+  });
+
+  it("If no fields filled and button pressed, error should appear", async () => {
+    //given
+    const theObject = ValidateFormPO.render();
+    //when
+    await theObject.allFieldsEmptyButtonPressed();
+    //then
+    await theObject.expectedErrorWhenEmptyFieldsAndButtonPressed();
   });
 });

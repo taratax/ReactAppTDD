@@ -95,19 +95,33 @@ export class ValidateFormPO {
     await userEvent.click(screen.getByRole("button", { name: /sign up/i }));
   }
 
+  async allFieldsEmptyButtonPressed() {
+    const localUser = userEvent.setup();
+
+    await localUser.click(screen.getByRole("button", { name: /sign up/i }));
+  }
+
   async expectedBadEmailErrorToBeDisplayed() {
     // Ensure the error message is awaited and asserted properly
-    expect(await screen.findByText(utils.EMAIL_BAD_ERROR)).toBeInTheDocument();
+    expect(
+      await screen.findByText(utils.signupErrMsg.EMAIL_BAD_ERROR),
+    ).toBeInTheDocument();
   }
 
   async expectedMissingEmailToBeDisplayed() {
     // Ensure the error message is awaited and asserted properly
-    expect(await screen.findByText(utils.EMAIL_MISS_ERROR)).toBeInTheDocument();
+    expect(
+      await screen.findByText(utils.signupErrMsg.EMAIL_MISS_ERROR),
+    ).toBeInTheDocument();
   }
 
   async expectedMissingUserNameErrorDisplayed() {
     expect(
-      await screen.findByText(utils.MISSING_USERNAME_ERROR),
+      await screen.findByText(utils.signupErrMsg.MISSING_USERNAME_ERROR),
     ).toBeInTheDocument();
+  }
+
+  async expectedErrorWhenEmptyFieldsAndButtonPressed() {
+    expect(screen.getByTestId("error-element")).toBeInTheDocument();
   }
 }
