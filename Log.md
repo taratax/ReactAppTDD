@@ -160,3 +160,7 @@ Improved tests with PO pattern.
 **28. 17. Mar. 2024**
 
 Some cleanup for the tests, use test-id for err msg check. Need to improve it next time.
+
+**29. 18. Mar. 2024**
+
+Today, we delved into Storybook, starting with establishing some structure for our stories. We then explored the default exports in a story file, focusing on understanding the purpose of args and argTypes. Additionally, we investigated how to display controls on the Storybook dashboard for our project and briefly touched upon the autodocs feature, though we haven't completed this part yet. One challenge we're facing is figuring out how to export a background control and ensure it takes effect when we're using TailwindCSS for styling.

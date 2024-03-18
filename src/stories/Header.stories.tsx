@@ -3,23 +3,17 @@ import { withRouter } from "storybook-addon-remix-react-router";
 
 import { Header } from "../components/header/Header";
 
-// export default {
-//   title: 'User Profile',
-//   render: () => <Header />,
-//   decorators: [withRouter],
-//   parameters: {
-//     reactRouter: reactRouterParameters({
-//       location: {
-//         pathParams: { userId: '42' },
-//       },
-//       routing: { path: '/users/:userId' },
-//     }),
-//   },
-// };
-
 const meta: Meta<typeof Header> = {
+  title: "Header/Header",
   component: Header,
   decorators: [withRouter],
+  tags: ["autodocs"],
+  args: {
+    heading: "test header",
+    paragraph: "test paragraph",
+    linkName: "test linkName",
+    linkUrl: "test urls",
+  },
 };
 
 export default meta;
@@ -33,5 +27,12 @@ export const Primary: Story = {
     paragraph: "Already have account?",
     linkName: "Login",
     linkUrl: "/",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "This is the signup page header component",
+      },
+    },
   },
 };

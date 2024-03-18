@@ -3,6 +3,7 @@ import { LoginPage } from "../pages/login/LoginPage";
 import { withRouter } from "storybook-addon-remix-react-router";
 
 const meta: Meta<typeof LoginPage> = {
+  title: "LoginPage/Login",
   component: LoginPage,
   decorators: [withRouter],
 };
