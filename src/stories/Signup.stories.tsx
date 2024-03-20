@@ -22,4 +22,8 @@ const meta: Meta<typeof SignupPage> = {
 export default meta;
 type Story = StoryObj<typeof SignupPage>;
 
-export const Basic: Story = {};
+export const Basic: Story = {
+  args: {
+    backgroundColor: "#a34646",
+  },
+};

@@ -168,3 +168,7 @@ Today, we delved into Storybook, starting with establishing some structure for o
 **30. 19. Mar. 2024**
 
 Small add to stories for header, still testing, and playing with storybook.
+
+**31. 20. Mar. 2024**
+
+Added parameter for background color picker in story for header. Now it is time to make it same for main part of the login signup pages.

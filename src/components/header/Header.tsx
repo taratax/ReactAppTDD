@@ -5,6 +5,7 @@ type headerProps = {
   paragraph: string;
   linkName: string;
   linkUrl: string;
+  backgroundColor: string;
 };
 
 export const Header = function ({
@@ -12,9 +13,10 @@ export const Header = function ({
   paragraph,
   linkName,
   linkUrl = "#",
+  backgroundColor = "white",
 }: headerProps) {
   return (
-    <div className="mb-10">
+    <div className={`mb-10`} style={{ backgroundColor: `${backgroundColor}` }}>
       <div className="flex justify-center">
         <img
           alt=""
