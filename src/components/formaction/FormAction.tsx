@@ -1,5 +1,3 @@
-import { CSSProperties } from "react";
-
 export type formActionProps = {
   handlesubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   type?: string;

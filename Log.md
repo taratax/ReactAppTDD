@@ -172,3 +172,9 @@ Small add to stories for header, still testing, and playing with storybook.
 **31. 20. Mar. 2024**
 
 Added parameter for background color picker in story for header. Now it is time to make it same for main part of the login signup pages.
+
+**32. 21. Mar. 2024**
+
+Added story with interaction using storybook/test package. Unfortunatelly still not working as expected.
+I'm expecting clicking button in storybook will show us a message error. In normal tests we have it covered in 
+jest/RTL using page object pattern. Did some cleaning removing skipped tests.
