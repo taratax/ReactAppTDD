@@ -178,3 +178,7 @@ Added parameter for background color picker in story for header. Now it is time 
 Added story with interaction using storybook/test package. Unfortunatelly still not working as expected.
 I'm expecting clicking button in storybook will show us a message error. In normal tests we have it covered in 
 jest/RTL using page object pattern. Did some cleaning removing skipped tests.
+
+**33. 27. Mar. 2024**
+
+Added story for the button in our FormAction component.

@@ -11,7 +11,7 @@ export const FormAction = function ({
   text,
 }: formActionProps) {
   return (
-    <form onSubmit={handlesubmit} role="form">
+    <form onSubmit={handlesubmit} onReset={handlesubmit} role="form">
       {type === "Button" ? (
         <button
           type={action}
