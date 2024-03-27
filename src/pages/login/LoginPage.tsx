@@ -9,6 +9,7 @@ export const LoginPage = function () {
         paragraph="Don't have  a count yet ?"
         linkName="Signup"
         linkUrl="/signup"
+        backgroundColor="yellow"
       />
       <Login />
     </>
