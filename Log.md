@@ -182,3 +182,7 @@ jest/RTL using page object pattern. Did some cleaning removing skipped tests.
 **33. 27. Mar. 2024**
 
 Added story for the button in our FormAction component.
+
+**34. 03. Apr. 2024***
+
+Adding new component nav bar. Use storybook as main driver. We are going to create new components primarily in isolation, using storybook.
