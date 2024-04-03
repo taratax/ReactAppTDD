@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { SignupPage } from "../pages/signup/SignupPage";
 import { withRouter } from "storybook-addon-remix-react-router";
-import { within, userEvent, expect, fn } from "@storybook/test";
+import { within, userEvent } from "@storybook/test";
 
 const meta: Meta<typeof SignupPage> = {
   title: "SignupPage/SignupPage",
