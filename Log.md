@@ -186,3 +186,7 @@ Added story for the button in our FormAction component.
 **34. 03. Apr. 2024***
 
 Adding new component nav bar. Use storybook as main driver. We are going to create new components primarily in isolation, using storybook.
+
+**35. 04. Apr. 2024**
+
+Adding colors parameters to modiify in storybook for navbar component.

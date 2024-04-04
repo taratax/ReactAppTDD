@@ -2,31 +2,65 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // Define props if needed. For simplicity, we're not passing props here.
-interface NavBarProps {}
+interface NavBarProps {
+  color: string;
+  textColor?: string;
+  guideTextColor?: string;
+}
 
-const NavBar: React.FC<NavBarProps> = () => {
+const NavBar: React.FC<NavBarProps> = ({
+  color = "",
+  textColor = "",
+  guideTextColor = "",
+}) => {
+  const resultClass = `bg-gray-800 text-white p-4`;
+
   return (
-    <nav className="bg-gray-800 text-white p-4">
+    <nav className={resultClass} style={{ backgroundColor: `${color}` }}>
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-lg font-semibold">
-          <Link to="/" className="hover:text-gray-300">
+          <Link
+            to="/"
+            className="hover:text-gray-300"
+            style={{ color: `${guideTextColor}` }}
+          >
             City Guide
           </Link>
         </div>
         <div className="hidden md:flex space-x-4">
-          <Link to="/places" className="hover:text-gray-300">
+          <Link
+            to="/places"
+            className="hover:text-gray-300"
+            style={{ color: `${textColor}` }}
+          >
             Places to Visit
           </Link>
-          <Link to="/hotels" className="hover:text-gray-300">
+          <Link
+            to="/hotels"
+            className="hover:text-gray-300"
+            style={{ color: `${textColor}` }}
+          >
             Hotels
           </Link>
-          <Link to="/eating-out" className="hover:text-gray-300">
+          <Link
+            to="/eating-out"
+            className="hover:text-gray-300"
+            style={{ color: `${textColor}` }}
+          >
             Eating Out
           </Link>
-          <Link to="/night-life" className="hover:text-gray-300">
+          <Link
+            to="/night-life"
+            className="hover:text-gray-300"
+            style={{ color: `${textColor}` }}
+          >
             Night Life
           </Link>
-          <Link to="/transportation" className="hover:text-gray-300">
+          <Link
+            to="/transportation"
+            className="hover:text-gray-300"
+            style={{ color: `${textColor}` }}
+          >
             Transportation
           </Link>
         </div>
